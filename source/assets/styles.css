@@ -1,0 +1,740 @@
+:root {
+    --bg: #111111;
+    --surface: #333333;
+    --accent: #5d0000;
+    --text: #ffffff;
+}
+
+/* Base styles */
+html {
+    height: 100%;
+}
+
+body {
+
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text);
+    min-height: 100%;
+}
+
+/* Logo styles */
+.logo-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: var(--bg);
+    z-index: 9999;
+    width: 100%;
+    border-bottom: 1px solid var(--surface);
+    height: 80px; /* Fixed height for logo container */
+}
+
+.logo-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo-right {
+    display: flex;
+    align-items: center;
+}
+
+.fixed-logo {
+    width: 50px;
+    margin-right: 15px;
+}
+
+.ua-logo {
+    height: 50px;
+    width: auto;
+}
+
+.logo-text {
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Main layout */
+.main-container {
+    display: flex;
+    margin-top: 80px; /* Match logo container height */
+    min-height: calc(100vh - 80px);
+    width: 100%;
+    position: relative;
+}
+
+/* Sidebar */
+.sidebar-col {
+    background-color: #11082d;
+    padding: 20px;
+    min-width: 250px;
+    max-width: 250px;
+    position: fixed;
+    height: calc(100vh - 80px); /* Subtract logo height */
+    top: 80px; /* Start right after logo */
+    left: 0;
+    overflow-y: auto;
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.sidebar-nav {
+    width: 100%;
+}
+
+.nav-link {
+    color: #ffffff !important;  /* Darker blue for sidebar links */
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-link:hover, .nav-link.active {
+    background-color: var(--accent) !important;
+    color: white !important;
+}
+
+/* Content area */
+.content-col {
+    flex-grow: 1;
+    padding: 20px 30px;
+    margin-left: 250px; /* Match sidebar width */
+    width: calc(100% - 250px);
+    height: calc(100vh - 80px); /* Account for header height */
+    overflow-y: auto;
+}
+
+/* Dashboard grid */
+.dashboard-grid {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(2, 1fr); /* Fixed 2-column layout */
+    margin-top: 20px;
+    position: relative;
+    width: 100%;
+}
+
+/* Cards */
+.card {
+    background-color: var(--surface) !important;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+    height: 450px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* KPI cards */
+.kpi-card {
+    background-color: var(--surface) !important;
+    border: none !important;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.kpi-card .card-header {
+    background-color: rgba(255,255,255,0.05);
+    border-bottom: none;
+    padding: 12px 16px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.kpi-card .card-body {
+    padding: 16px;
+    text-align: center;
+}
+
+.kpi-card h2 {
+    font-size: 32px;
+    margin: 0;
+    color: var(--accent);
+}
+
+/* Tabs */
+.nav-tabs {
+    border-bottom: 1px solid var(--surface);
+    margin-bottom: 20px;
+}
+
+.nav-tabs .nav-link {
+    color: var(--text);
+    border: none;
+    padding: 12px 24px;
+    margin-right: 4px;
+    border-radius: 6px 6px 0 0;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: var(--accent);
+    color: white;
+}
+
+/* Loading spinner */
+.dash-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Ensure graphs don't overflow and maintain position */
+.js-plotly-plot {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent !important;
+}
+
+/* Graph container */
+.graph-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+}
+
+/* Indicator row */
+.indicator-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Indicator cards */
+.indicator-card {
+    background-color: var(--surface) !important;
+    color: var(--text);
+    text-align: center;
+    padding: 20px;
+}
+
+.indicator-card .value {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--text);
+}
+
+.indicator-card .title {
+    font-size: 1.2em;
+    color: var(--text);
+    margin-top: 10px;
+}
+
+/* Override Plotly graph colors */
+.js-plotly-plot .plotly .main-svg {
+    background: transparent !important;
+}
+
+.js-plotly-plot .plotly .bg {
+    fill: transparent !important;
+}
+
+.js-plotly-plot .plotly text {
+    fill: var(--text) !important;
+}
+
+.js-plotly-plot .plotly .gridlayer path {
+    stroke: rgba(255, 255, 255, 0.1) !important;
+}
+
+.js-plotly-plot .plotly .zerolinelayer path {
+    stroke: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Loading container */
+.loading-container {
+    position: relative;
+    min-height: 400px;
+}
+
+/* Add media query for larger screens */
+@media (min-width: 1600px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Add media query for smaller screens */
+@media (max-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    .card {
+        height: 400px;
+    }
+}
+
+/* Existing dashboard styles */
+body {
+    background-color: #111111;
+    font-family: "Montserrat", "Helvetica", "Open Sans", "Arial";
+    padding: 20px; /* add padding around the whole body */
+}
+
+.navbar {
+    background-color: var(--accent);
+    color: var(--text);
+}
+
+.sidebar {
+    background-color: #11082d;
+    padding-top: -20px;
+}
+
+.sidebar .nav-link {
+    color: #183255;
+    margin-bottom: 10px;
+}
+
+.sidebar .nav-link:hover, .sidebar .nav-link.active {
+    color: var(--text);
+    background-color: var(--accent);
+}
+
+.card {
+    background-color: #333333 !important; /* Change this color to your preference */
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: white;
+    margin: 20px 0;
+}
+
+/* Styles for login, register, reset-password pages */
+.auth-body {
+    background-color: #444444;
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    color: #fff;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.auth-card {
+    width: 100%;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(90, 89, 89, 0.6);
+}
+
+.auth-h2 {
+    text-align: center;
+    color: #fff;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-input {
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background-color: #494747;
+    transition: border-color 0.3s ease-in-out;
+    outline: none;
+    color: #fff;
+}
+
+.auth-input::placeholder {
+    color: #888;
+}
+
+.auth-input:focus {
+    border-color: #3498db;
+}
+
+.auth-button {
+    background-color: var(--accent);
+    color: var(--text);
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.auth-button:hover {
+    background-color: #820000;
+}
+.auth-link {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 12px;
+    display: inline-block;
+}
+
+.auth-link:hover {
+    text-decoration: underline;
+}
+
+.header-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.header-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #5d0000;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.header-links a:hover {
+    background-color: #820000;
+}
+
+/* Custom Search Container */
+/* Ensure the overall custom search container stacks its children vertically */
+/* Overall container for search controls */
+#custom-search-container {
+    display: flex;
+    flex-direction: column; /* Stack rows vertically */
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: #222;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Row for the date/time pickers and search button */
+.search-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Ensure date-time groups display in a row */
+.date-time-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Date picker styling */
+#custom-search-container .DateInput {
+    background-color: #262555;
+    color: white;
+    border-radius: 5px;
+    padding: 2px;
+    gap: 50px; /* Add space between children */
+    outline: none;
+    Height: 25%  !important;
+    Width: 100px !important;
+    border-radius: inherit;
+
+}
+
+#custom-search-container .DateInput input {
+    color: white;
+    font-size: 14px;
+    background-color: transparent;
+    border: none;    
+    outline: none;
+    Height: 22px !important;
+    Width: 100px !important;
+
+}
+
+#custom-search-container .DateInput input::placeholder {
+    color: #888;
+    outline: none;
+
+}
+
+#custom-search-container .DateInput input:focus {
+    outline: none;
+    
+}
+
+/* Time input styling */
+#custom-search-container .dcc.Input {
+    background-color: #222;
+    color: white;
+    border: 1px solid #222;
+    border-radius: 5px;
+    padding: 5px;
+    width: 10px;
+}
+
+#custom-search-container .dcc.Input:focus {
+    border-color: #3498db2d;
+    outline: none;
+}
+
+/* Button styling */
+#custom-search-container .dcc.Button {
+    background-color: #5d0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#custom-search-container .dcc.Button:hover {
+    background-color: #820000;
+}
+
+/* Add margin below rows */
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+/* Login Page Styles */
+.login-page {
+    font-family: 'Open Sans';
+    font-weight: 100;
+    display: flex;
+    overflow: hidden;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.login-form {
+    min-height: 10rem;
+    margin: auto;
+    max-width: 50%;
+    padding: .5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.login-text {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 auto;
+    max-width: 50%;
+    padding: .5rem;
+    text-align: center;
+}
+
+.login-text .fa-stack-1x {
+    color: black;
+}
+
+.login-username,
+.login-password {
+    background: transparent;
+    border: 0 solid;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    display: block;
+    margin: 1rem;
+    padding: .5rem;
+    transition: 250ms background ease-in;
+    width: calc(100% - 3rem);
+}
+
+.login-username:focus,
+.login-password:focus {
+    background: white;
+    color: black;
+    transition: 250ms background ease-in;
+}
+
+.login-username::placeholder,
+.login-password::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.login-username:focus::placeholder,
+.login-password:focus::placeholder {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.error-message {
+    color: #ff6b6b;
+    text-align: center;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+.login-submit {
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    display: block;
+    margin: 1rem auto;
+    min-width: 1px;
+    padding: .5rem 2rem;
+    transition: 250ms background ease-in;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.login-submit:hover,
+.login-submit:focus {
+    background: white;
+    color: black;
+    transition: 250ms background ease-in;
+}
+
+.login-forgot-pass {
+    bottom: 300px;
+    color: white;
+    cursor: pointer;
+    display: block;
+    font-size: 75%;
+    left: -9px;
+    opacity: 0.6;
+    padding: .5rem;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+}
+
+.login-forgot-pass:hover {
+    opacity: 1;
+}
+
+.underlay-photo {
+    animation: hue-rotate 6s infinite;
+    background: url();
+    background-size: cover;
+    -webkit-filter: grayscale(30%);
+    filter: grayscale(30%);
+    z-index: -1;
+    left: 0;
+    min-height: 100%;
+    min-width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+.underlay-black {
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+    left: 0;
+    min-height: 100%;
+    min-width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+@keyframes hue-rotate {
+    from {
+        -webkit-filter: grayscale(30%) hue-rotate(0deg);
+    }
+    to {
+        -webkit-filter: grayscale(30%) hue-rotate(360deg);
+    }
+}
+
+/* Site Selector Styles */
+.site-selector-container {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 20px;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 8px;
+}
+
+/* Dropdown container */
+.Select-control {
+    background-color: var(--surface) !important;
+    border: 1px solid var(--accent) !important;
+}
+
+/* Active selection text */
+.Select-value-label {
+    color: #ffffff !important;
+}
+
+/* Dropdown menu */
+.Select-menu-outer {
+    background-color: var(--surface) !important;
+    border: 1px solid var(--accent) !important;
+}
+
+/* Dropdown options */
+.Select-option {
+    background-color: var(--surface) !important;
+    color: #ffffff !important;
+}
+
+/* Dropdown option on hover */
+.Select-option:hover {
+    background-color: var(--accent) !important;
+    color: #ffffff !important;
+}
+
+/* Disabled options */
+.Select-option.is-disabled {
+    color: rgba(255,255,255,0.3) !important;
+    cursor: not-allowed;
+}
+
+/* Selected option */
+.Select-option.is-selected {
+    background-color: var(--accent) !important;
+    color: #ffffff !important;
+}
+
+/* Input text color */
+.Select-input > input {
+    color: #ffffff !important;
+}
+
+/* Placeholder text */
+.Select-placeholder {
+    color: rgba(255,255,255,0.7) !important;
+}

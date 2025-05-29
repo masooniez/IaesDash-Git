@@ -1,0 +1,497 @@
+Metadata-Version: 2.2
+Name: viztracer
+Version: 1.0.2
+Summary: A debugging and profiling tool that can trace and visualize python code execution
+Author-email: Tian Gao <gaogaotiantian@hotmail.com>
+License:                                  Apache License
+                                   Version 2.0, January 2004
+                                http://www.apache.org/licenses/
+        
+           TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+        
+           1. Definitions.
+        
+              "License" shall mean the terms and conditions for use, reproduction,
+              and distribution as defined by Sections 1 through 9 of this document.
+        
+              "Licensor" shall mean the copyright owner or entity authorized by
+              the copyright owner that is granting the License.
+        
+              "Legal Entity" shall mean the union of the acting entity and all
+              other entities that control, are controlled by, or are under common
+              control with that entity. For the purposes of this definition,
+              "control" means (i) the power, direct or indirect, to cause the
+              direction or management of such entity, whether by contract or
+              otherwise, or (ii) ownership of fifty percent (50%) or more of the
+              outstanding shares, or (iii) beneficial ownership of such entity.
+        
+              "You" (or "Your") shall mean an individual or Legal Entity
+              exercising permissions granted by this License.
+        
+              "Source" form shall mean the preferred form for making modifications,
+              including but not limited to software source code, documentation
+              source, and configuration files.
+        
+              "Object" form shall mean any form resulting from mechanical
+              transformation or translation of a Source form, including but
+              not limited to compiled object code, generated documentation,
+              and conversions to other media types.
+        
+              "Work" shall mean the work of authorship, whether in Source or
+              Object form, made available under the License, as indicated by a
+              copyright notice that is included in or attached to the work
+              (an example is provided in the Appendix below).
+        
+              "Derivative Works" shall mean any work, whether in Source or Object
+              form, that is based on (or derived from) the Work and for which the
+              editorial revisions, annotations, elaborations, or other modifications
+              represent, as a whole, an original work of authorship. For the purposes
+              of this License, Derivative Works shall not include works that remain
+              separable from, or merely link (or bind by name) to the interfaces of,
+              the Work and Derivative Works thereof.
+        
+              "Contribution" shall mean any work of authorship, including
+              the original version of the Work and any modifications or additions
+              to that Work or Derivative Works thereof, that is intentionally
+              submitted to Licensor for inclusion in the Work by the copyright owner
+              or by an individual or Legal Entity authorized to submit on behalf of
+              the copyright owner. For the purposes of this definition, "submitted"
+              means any form of electronic, verbal, or written communication sent
+              to the Licensor or its representatives, including but not limited to
+              communication on electronic mailing lists, source code control systems,
+              and issue tracking systems that are managed by, or on behalf of, the
+              Licensor for the purpose of discussing and improving the Work, but
+              excluding communication that is conspicuously marked or otherwise
+              designated in writing by the copyright owner as "Not a Contribution."
+        
+              "Contributor" shall mean Licensor and any individual or Legal Entity
+              on behalf of whom a Contribution has been received by Licensor and
+              subsequently incorporated within the Work.
+        
+           2. Grant of Copyright License. Subject to the terms and conditions of
+              this License, each Contributor hereby grants to You a perpetual,
+              worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+              copyright license to reproduce, prepare Derivative Works of,
+              publicly display, publicly perform, sublicense, and distribute the
+              Work and such Derivative Works in Source or Object form.
+        
+           3. Grant of Patent License. Subject to the terms and conditions of
+              this License, each Contributor hereby grants to You a perpetual,
+              worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+              (except as stated in this section) patent license to make, have made,
+              use, offer to sell, sell, import, and otherwise transfer the Work,
+              where such license applies only to those patent claims licensable
+              by such Contributor that are necessarily infringed by their
+              Contribution(s) alone or by combination of their Contribution(s)
+              with the Work to which such Contribution(s) was submitted. If You
+              institute patent litigation against any entity (including a
+              cross-claim or counterclaim in a lawsuit) alleging that the Work
+              or a Contribution incorporated within the Work constitutes direct
+              or contributory patent infringement, then any patent licenses
+              granted to You under this License for that Work shall terminate
+              as of the date such litigation is filed.
+        
+           4. Redistribution. You may reproduce and distribute copies of the
+              Work or Derivative Works thereof in any medium, with or without
+              modifications, and in Source or Object form, provided that You
+              meet the following conditions:
+        
+              (a) You must give any other recipients of the Work or
+                  Derivative Works a copy of this License; and
+        
+              (b) You must cause any modified files to carry prominent notices
+                  stating that You changed the files; and
+        
+              (c) You must retain, in the Source form of any Derivative Works
+                  that You distribute, all copyright, patent, trademark, and
+                  attribution notices from the Source form of the Work,
+                  excluding those notices that do not pertain to any part of
+                  the Derivative Works; and
+        
+              (d) If the Work includes a "NOTICE" text file as part of its
+                  distribution, then any Derivative Works that You distribute must
+                  include a readable copy of the attribution notices contained
+                  within such NOTICE file, excluding those notices that do not
+                  pertain to any part of the Derivative Works, in at least one
+                  of the following places: within a NOTICE text file distributed
+                  as part of the Derivative Works; within the Source form or
+                  documentation, if provided along with the Derivative Works; or,
+                  within a display generated by the Derivative Works, if and
+                  wherever such third-party notices normally appear. The contents
+                  of the NOTICE file are for informational purposes only and
+                  do not modify the License. You may add Your own attribution
+                  notices within Derivative Works that You distribute, alongside
+                  or as an addendum to the NOTICE text from the Work, provided
+                  that such additional attribution notices cannot be construed
+                  as modifying the License.
+        
+              You may add Your own copyright statement to Your modifications and
+              may provide additional or different license terms and conditions
+              for use, reproduction, or distribution of Your modifications, or
+              for any such Derivative Works as a whole, provided Your use,
+              reproduction, and distribution of the Work otherwise complies with
+              the conditions stated in this License.
+        
+           5. Submission of Contributions. Unless You explicitly state otherwise,
+              any Contribution intentionally submitted for inclusion in the Work
+              by You to the Licensor shall be under the terms and conditions of
+              this License, without any additional terms or conditions.
+              Notwithstanding the above, nothing herein shall supersede or modify
+              the terms of any separate license agreement you may have executed
+              with Licensor regarding such Contributions.
+        
+           6. Trademarks. This License does not grant permission to use the trade
+              names, trademarks, service marks, or product names of the Licensor,
+              except as required for reasonable and customary use in describing the
+              origin of the Work and reproducing the content of the NOTICE file.
+        
+           7. Disclaimer of Warranty. Unless required by applicable law or
+              agreed to in writing, Licensor provides the Work (and each
+              Contributor provides its Contributions) on an "AS IS" BASIS,
+              WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+              implied, including, without limitation, any warranties or conditions
+              of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+              PARTICULAR PURPOSE. You are solely responsible for determining the
+              appropriateness of using or redistributing the Work and assume any
+              risks associated with Your exercise of permissions under this License.
+        
+           8. Limitation of Liability. In no event and under no legal theory,
+              whether in tort (including negligence), contract, or otherwise,
+              unless required by applicable law (such as deliberate and grossly
+              negligent acts) or agreed to in writing, shall any Contributor be
+              liable to You for damages, including any direct, indirect, special,
+              incidental, or consequential damages of any character arising as a
+              result of this License or out of the use or inability to use the
+              Work (including but not limited to damages for loss of goodwill,
+              work stoppage, computer failure or malfunction, or any and all
+              other commercial damages or losses), even if such Contributor
+              has been advised of the possibility of such damages.
+        
+           9. Accepting Warranty or Additional Liability. While redistributing
+              the Work or Derivative Works thereof, You may choose to offer,
+              and charge a fee for, acceptance of support, warranty, indemnity,
+              or other liability obligations and/or rights consistent with this
+              License. However, in accepting such obligations, You may act only
+              on Your own behalf and on Your sole responsibility, not on behalf
+              of any other Contributor, and only if You agree to indemnify,
+              defend, and hold each Contributor harmless for any liability
+              incurred by, or claims asserted against, such Contributor by reason
+              of your accepting any such warranty or additional liability.
+        
+           END OF TERMS AND CONDITIONS
+        
+           ======================================================================
+        
+           VizTracer uses source code or generated code from following components:
+        
+             perfetto - https://github.com/google/perfetto (Apache License V2)
+               - /src/web_dist/*
+        
+Project-URL: Homepage, https://github.com/gaogaotiantian/viztracer
+Project-URL: Documentation, https://viztracer.readthedocs.io
+Classifier: Development Status :: 4 - Beta
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Topic :: Software Development :: Quality Assurance
+Classifier: Topic :: Software Development :: Bug Tracking
+Classifier: Topic :: System :: Logging
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+License-File: NOTICE.txt
+Requires-Dist: objprint>=0.3.0
+Provides-Extra: full
+Requires-Dist: orjson; extra == "full"
+
+# VizTracer
+
+[![build](https://github.com/gaogaotiantian/viztracer/workflows/build/badge.svg)](https://github.com/gaogaotiantian/viztracer/actions?query=workflow%3Abuild)  [![flake8](https://github.com/gaogaotiantian/viztracer/workflows/lint/badge.svg)](https://github.com/gaogaotiantian/viztracer/actions?query=workflow%3ALint)  [![readthedocs](https://img.shields.io/readthedocs/viztracer)](https://viztracer.readthedocs.io/en/stable/)  [![coverage](https://img.shields.io/codecov/c/github/gaogaotiantian/viztracer)](https://codecov.io/gh/gaogaotiantian/viztracer)  [![pypi](https://img.shields.io/pypi/v/viztracer.svg)](https://pypi.org/project/viztracer/)  [![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/gaogaotiantian.viztracer-vscode?logo=visual-studio)](https://marketplace.visualstudio.com/items?itemName=gaogaotiantian.viztracer-vscode)  [![support-version](https://img.shields.io/pypi/pyversions/viztracer)](https://img.shields.io/pypi/pyversions/viztracer)  [![license](https://img.shields.io/github/license/gaogaotiantian/viztracer)](https://github.com/gaogaotiantian/viztracer/blob/master/LICENSE)  [![commit](https://img.shields.io/github/last-commit/gaogaotiantian/viztracer)](https://github.com/gaogaotiantian/viztracer/commits/master)  [![sponsor](https://img.shields.io/badge/%E2%9D%A4-Sponsor%20me-%23c96198?style=flat&logo=GitHub)](https://github.com/sponsors/gaogaotiantian)
+
+VizTracer is a low-overhead logging/debugging/profiling tool that can trace and visualize your python code execution.
+
+The front-end UI is powered by [Perfetto](https://perfetto.dev/). **Use "AWSD" to zoom/navigate**.
+More help can be found in "Support - Controls".
+
+[![example_img](https://github.com/gaogaotiantian/viztracer/blob/master/img/example.png)](https://github.com/gaogaotiantian/viztracer/blob/master/img/example.png)
+
+
+## Highlights
+
+* Detailed function entry/exit information on timeline with source code
+* Super easy to use, no source code change for most features, no package dependency
+* Low overhead, probably the fastest tracer in the market
+* Supports threading, multiprocessing, subprocess, async and PyTorch
+* Powerful front-end, able to render GB-level trace smoothly
+* Works on Linux/MacOS/Windows
+
+## Install
+
+The preferred way to install VizTracer is via pip
+
+```sh
+pip install viztracer
+```
+
+## Basic Usage
+
+### Command Line
+
+```sh
+# Instead of "python3 my_script.py arg1 arg2"
+viztracer my_script.py arg1 arg2
+```
+
+<details>
+
+<summary>
+A <code>result.json</code> file will be generated, which you can open with <code>vizviewer</code>
+</summary>
+
+```sh
+# You can display all the files in a directory and open them in browser too
+vizviewer ./
+# For very large trace files, try external trace processor
+vizviewer --use_external_processor result.json
+```
+
+vizviewer will host an HTTP server on ``http://localhost:9001``. You can also open your browser and use that address.
+
+If you do not want vizviewer to open the webbrowser automatically, you can use
+
+```sh
+vizviewer --server_only result.json
+```
+
+If you just need to bring up the trace report once, and do not want the persistent server, use
+
+```sh
+vizviewer --once result.json
+```
+
+</details>
+
+```sh
+vizviewer result.json
+```
+
+A [VS Code Extension](https://marketplace.visualstudio.com/items?itemName=gaogaotiantian.viztracer-vscode)
+is available to make your life even easier.
+
+<p align="center">
+    <img src="https://github.com/gaogaotiantian/viztracer-vscode/raw/master/assets/demo.gif" />
+</p>
+
+<details>
+
+<summary>
+Add <code>--open</code> to open the reports right after tracing
+</summary>
+
+```sh
+viztracer --open my_script.py arg1 arg2
+viztracer -o result.html --open my_script.py arg1 arg2
+```
+
+</details>
+
+<details>
+
+<summary>
+modules and console scripts(like <code>flask</code>) are supported as well
+</summary>
+
+```sh
+viztracer -m your_module
+```
+
+```sh
+viztracer flask run
+```
+
+</details>
+
+### Inline
+
+You can also manually start/stop VizTracer in your script as well.
+
+```python
+from viztracer import VizTracer
+
+tracer = VizTracer()
+tracer.start()
+# Something happens here
+tracer.stop()
+tracer.save() # also takes output_file as an optional argument
+```
+
+Or, you can do it with ```with``` statement
+
+```python
+with VizTracer(output_file="optional.json") as tracer:
+    # Something happens here
+```
+
+### Jupyter
+
+If you are using Jupyter, you can use viztracer cell magics.
+
+```python
+# You need to load the extension first
+%load_ext viztracer
+```
+
+```python
+%%viztracer
+# Your code after
+```
+
+A ``VizTracer Report`` button will appear after the cell and you can click it to view the results
+
+### PyTorch
+
+VizTracer can log native calls and GPU events of PyTorch (based on `torch.profiler`) with
+``--log_torch``.
+
+```python
+with VizTracer(log_torch=True) as tracer:
+    # Your torch code
+```
+
+```sh
+viztracer --log_torch your_model.py
+```
+
+## Advanced Usage
+
+### Trace Filter
+
+VizTracer can filter out the data you don't want to reduce overhead and keep info of a longer time period before you dump the log.
+
+* [Min Duration](https://viztracer.readthedocs.io/en/stable/filter.html#min-duration)
+* [Max Stack Depth](https://viztracer.readthedocs.io/en/stable/filter.html#max-stack-depth)
+* [Include Files](https://viztracer.readthedocs.io/en/stable/filter.html#include-files)
+* [Exclude Files](https://viztracer.readthedocs.io/en/stable/filter.html#exclude-files)
+* [Ignore C Function](https://viztracer.readthedocs.io/en/stable/filter.html#ignore-c-function)
+* [Sparse Log](https://viztracer.readthedocs.io/en/stable/filter.html#log-sparse)
+
+### Extra Logs without Code Change
+
+VizTracer can log extra information without changing your source code
+
+* [Any Variable/Attribute with RegEx](https://viztracer.readthedocs.io/en/stable/extra_log.html#log-variable)
+* [Function Entry](https://viztracer.readthedocs.io/en/stable/extra_log.html#log-function-entry)
+* [Variables in Specified Function](https://viztracer.readthedocs.io/en/stable/extra_log.html#log-function-execution)
+* [Garbage Collector Operation](https://viztracer.readthedocs.io/en/stable/extra_log.html#log-garbage-collector)
+* [Function Input Arguments](https://viztracer.readthedocs.io/en/stable/extra_log.html#log-function-arguments)
+* [Function Return Value](https://viztracer.readthedocs.io/en/stable/extra_log.html#log-function-return-value)
+* [Audit Events](https://viztracer.readthedocs.io/en/stable/extra_log.html#log-audit)
+* [Raised Exceptions](https://viztracer.readthedocs.io/en/stable/extra_log.html#log-exception)
+
+### Add Custom Event
+
+VizTracer supports inserting custom events while the program is running. This works like a print debug, but you can know when this print happens while looking at trace data.
+
+* [Instant Event](https://viztracer.readthedocs.io/en/stable/custom_event_intro.html#instant-event)
+* [Variable Event](https://viztracer.readthedocs.io/en/stable/custom_event_intro.html#variable-event)
+* [Duration Event](https://viztracer.readthedocs.io/en/stable/custom_event_intro.html#duration-event)
+
+## Misc
+
+### Multi Thread Support
+
+For Python3.12+, VizTracer supports Python-level multi-thread tracing without the need to do any modification to your code.
+
+For versions before 3.12, VizTracer supports python native ```threading``` module. Just start ```VizTracer``` before you create threads and it will just work.
+
+For other multi-thread scenarios, you can use ``enable_thread_tracing()`` to notice VizTracer about the thread to trace it.
+
+[![example_img](https://github.com/gaogaotiantian/viztracer/blob/master/img/multithread_example.png)](https://github.com/gaogaotiantian/viztracer/blob/master/img/multithread_example.png)
+
+Refer to [multi thread docs](https://viztracer.readthedocs.io/en/stable/concurrency.html) for details
+
+
+### Multi Process Support
+
+VizTracer supports ```subprocess```, ```multiprocessing```, ```os.fork()```, ```concurrent.futures```, and ```loky``` out of the box.
+
+For more general multi-process cases, VizTracer can support with some extra steps.
+
+[![example_img](https://github.com/gaogaotiantian/viztracer/blob/master/img/multiprocess_example.png)](https://github.com/gaogaotiantian/viztracer/blob/master/img/multiprocess_example.png)
+
+Refer to [multi process docs](https://viztracer.readthedocs.io/en/stable/concurrency.html) for details
+
+### Async Support
+
+VizTracer supports ```asyncio``` natively, but could enhance the report by using ```--log_async```.
+
+[![example_img](https://github.com/gaogaotiantian/viztracer/blob/master/img/async_example.png)](https://github.com/gaogaotiantian/viztracer/blob/master/img/async_example.png)
+
+Refer to [async docs](https://viztracer.readthedocs.io/en/stable/concurrency.html) for details
+
+### Flamegraph
+
+Perfetto supports native flamegraph, just select slices on the UI and choose "Slice Flamegraph".
+
+[![example_img](https://github.com/gaogaotiantian/viztracer/blob/master/img/flamegraph.png)](https://github.com/gaogaotiantian/viztracer/blob/master/img/flamegraph.png)
+
+### Remote attach
+
+VizTracer supports remote attach to an arbitrary Python process to trace it, as long as viztracer is importable
+
+Refer to [remote attach docs](https://viztracer.readthedocs.io/en/stable/remote_attach.html)
+
+### JSON alternative
+
+VizTracer needs to dump the internal data to json format. It is recommended for the users to install ```orjson```, which is much faster than the builtin ```json``` library. VizTracer will try to import ```orjson``` and fall back to the builtin ```json``` library if ```orjson``` does not exist.
+
+## Performance
+
+VizTracer puts in a lot of effort to achieve low overhead. The actual performance impact largely depends on your application.
+For typical codebases, the overhead is expected to be below 1x. If your code has infrequent function calls,
+the overhead could be minimal.
+
+<details>
+
+<summary>
+Detailed explanation
+</summary>
+
+The overhead introduced by VizTracer is basically a fixed amount of time during function entry and exit, so the more time spent on
+function entries and exits, the more overhead will be observed. A pure recursive ```fib``` function could suffer 3x-4x overhead
+on Python3.11+ (when the Python call is optimized, before that Python call was slower so the overhead ratio would be less).
+
+In the real life scenario, your code should not spend too much time on function calls (they don't really do anything useful), so
+the overhead would be much smaller.
+
+Many techniques are applied to minimize the overall overhead during code execution to reduce the inevitable skew introduced by
+VizTracer (the report saving part is not as critical). For example, VizTracer tries to use the CPU timestamp counter instead of
+a syscall to get the time when available. On Python 3.12+, VizTracer uses ```sys.monitoring``` which has less overhead than
+```sys.setprofile```. All of the efforts made it observably faster than ```cProfile```, the Python stdlib profiler.
+
+However, VizTracer is a tracer, which means it has to record every single function entry and exit, so it can't be as fast as
+the sampling profilers - they are not the same thing. With the extra overhead, VizTracer provides a lot more information than
+normal sampling profilers.
+
+</details>
+
+## Documentation
+
+For full documentation, please see [https://viztracer.readthedocs.io/en/stable](https://viztracer.readthedocs.io/en/stable)
+
+## Bugs/Requests
+
+Please send bug reports and feature requests through [github issue tracker](https://github.com/gaogaotiantian/viztracer/issues). VizTracer is currently under development now and it's open to any constructive suggestions.
+
+## License
+
+Copyright 2020-2025 Tian Gao.
+
+Distributed under the terms of the  [Apache 2.0 license](https://github.com/gaogaotiantian/viztracer/blob/master/LICENSE).
